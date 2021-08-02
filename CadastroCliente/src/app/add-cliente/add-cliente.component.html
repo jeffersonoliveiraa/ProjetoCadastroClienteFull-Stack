@@ -1,0 +1,33 @@
+<form [formGroup]="clienteForm" (ngSubmit)="onSubmit()">
+  <label for="nome">Nome: </label>
+  <input id="nome" type="text" formControlName="nome">
+
+  <label for="email">E-mail: </label>
+  <input id="email" type="text" formControlName="email">
+
+  <label for="logradouro">Logradouro: </label>
+  <input id="logradouro" type="text" formControlName="logradouro">
+
+  <label for="numero">N°: </label>
+  <input id="numero" type="text" formControlName="numero">
+
+  <label for="complemento">Complemento: </label>
+  <input id="complemento" type="text" formControlName="complemento">
+
+  <label for="cep">CEP: </label>
+  <input id="cep" type="text" formControlName="cep">
+
+  <label for="bairro">Bairro: </label>
+  <input id="bairro" type="text" formControlName="bairro">
+
+  <label for="cidade">Cidade: </label>
+  <input id="cidade" type="text" formControlName="cidade">
+
+  <label for="estado">Estado: </label>
+  <input id="estado" type="text" formControlName="estado">
+
+  <input type="button" class="btn btn-default" value="Cancel">
+  <input type="submit" class="btn btn-success" value="Add">
+
+</form>
+

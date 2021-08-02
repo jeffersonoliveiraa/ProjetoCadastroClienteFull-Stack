@@ -21,7 +21,8 @@ namespace ApiCadastroCliente.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "1")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "1")] //Comentado para o front-end enviar informações sem precisar autenticação.
         public List<Cliente> GetClientes()
         {
             try
@@ -49,7 +50,8 @@ namespace ApiCadastroCliente.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "1")]
+        [AllowAnonymous]
+        //[Authorize(Roles = "1")] //Comentado para o front-end enviar informações sem precisar autenticação.
         public void CreateCliente(Cliente cliente)
         {
             try
