@@ -1,5 +1,6 @@
 ﻿using ApiCadastroCliente.Models;
 using ApiCadastroCliente.Repositories;
+using ApiCadastroCliente.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -36,7 +37,7 @@ namespace ApiCadastroCliente.Controllers
         }
 
         [HttpGet("ID")]
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         public Cliente GetClienteID(int ID)
         {
             try
@@ -50,13 +51,23 @@ namespace ApiCadastroCliente.Controllers
         }
 
         [HttpPut]
-        [AllowAnonymous]
         //[Authorize(Roles = "1")] //Comentado para o front-end enviar informações sem precisar autenticação.
-        public void CreateCliente(Cliente cliente)
+
+        public void CreateCliente(ClienteViewModel cliente)
         {
+            Cliente _cliente = new Cliente();
+            _cliente.Nome = cliente.Nome;
+            _cliente.Email = cliente.Email;
+            _cliente.Logradouro = cliente.Logradouro;
+            _cliente.NumeroRes = cliente.NumeroRes;
+            _cliente.Complemento = cliente.Complemento;
+            _cliente.Cep = cliente.Cep;
+            _cliente.Bairro = cliente.Bairro;
+            _cliente.Cidade = cliente.Cidade;
+            _cliente.Estado = cliente.Estado;
             try
             {
-                 _clienteRepository.CreateCliente(cliente);
+                _clienteRepository.CreateCliente(_cliente);
             }
             catch (Exception ex)
             {
@@ -70,7 +81,7 @@ namespace ApiCadastroCliente.Controllers
         {
             try
             {
-                 _clienteRepository.DeleteClienteByID(ID);
+                _clienteRepository.DeleteClienteByID(ID);
             }
             catch (Exception ex)
             {
