@@ -18,38 +18,17 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `cadastroclientes`.`Usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `cadastroclientes`.`Usuario` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `Nome` VARCHAR(45) NOT NULL,
-  `Email` VARCHAR(45) NOT NULL,
-  `Senha` VARCHAR(45) NOT NULL,
-  `DataCria` DATETIME(6) NOT NULL,
-  `Perfil` INT NOT NULL,
+CREATE TABLE `usuarios` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `IDPerfil` int NOT NULL,
+  `Nome` varchar(45) NOT NULL,
+  `Email` varchar(45) NOT NULL,
+  `Senha` varchar(45) NOT NULL,
+  `DataCria` datetime(6) NOT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `IDPerfil_idx` (`Perfil` ASC) VISIBLE,
-  CONSTRAINT `IDPerfil`
-    FOREIGN KEY (`Perfil`)
-    REFERENCES `cadastroclientes`.`Perfil` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-2
-CREATE TABLE IF NOT EXISTS `cadastroclientes`.`Usuario` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `Nome` VARCHAR(45) NOT NULL,
-  `Email` VARCHAR(45) NOT NULL,
-  `Senha` VARCHAR(45) NOT NULL,
-  `DataCria` DATETIME(6) NOT NULL,
-  `IDPerfil` INT NOT NULL,
-  PRIMARY KEY (`ID`),
-  INDEX `IDPerfil` (`IDPerfil` ASC) VISIBLE,
-  CONSTRAINT `IDPerfil`
-    FOREIGN KEY (`IDPerfil`)
-    REFERENCES `cadastroclientes`.`Perfil` (`ID`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+  KEY `IDPerfil` (`IDPerfil`),
+  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`IDPerfil`) REFERENCES `perfil` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3
 
 -- -----------------------------------------------------
 -- Table `cadastroclientes`.`Clientes`
